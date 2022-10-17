@@ -234,6 +234,7 @@ protected:
 
       inline bool isConnected() const { return connected && shared_data->valid; }
       inline time_t getLastConnectTime() const { return last_connect_time; }
+      inline uint64_t getLastEventId() const {return last_event_id; }
 
       inline uint32_t lastFrameScore() {
         return shared_data->last_frame_score;

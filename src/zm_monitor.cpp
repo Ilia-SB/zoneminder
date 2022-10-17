@@ -1808,6 +1808,7 @@ bool Monitor::Analyse() {
                     }
                   }
                   noteSet.insert(linked_monitors[i]->Name());
+                  noteSet.insert(std::to_string([i]->getLastEventId()));
                   score += linked_monitors[i]->lastFrameScore(); // 50;
                 } else {
                   Debug(1, "Linked monitor %d %s is not alarmed",
