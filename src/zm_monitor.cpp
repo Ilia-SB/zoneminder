@@ -293,6 +293,12 @@ bool Monitor::MonitorLink::hasAlarmed() {
   return false;
 }
 
+uint64_t Monitor::MonitorLink::getLastEventId() {
+  if (isConnected()) {
+    return shared_data->last_event_id;
+  }
+}
+
 Monitor::Monitor() 
  : id(0),
   name(""),
@@ -1808,7 +1814,7 @@ bool Monitor::Analyse() {
                     }
                   }
                   noteSet.insert(linked_monitors[i]->Name());
-                  noteSet.insert(std::to_string(linked_monitors[i]->getLastEventId()));
+                  noteSet.insert((std::to_string(linked_monitors[i]->getLastEventId()));
                   score += linked_monitors[i]->lastFrameScore(); // 50;
                 } else {
                   Debug(1, "Linked monitor %d %s is not alarmed",
