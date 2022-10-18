@@ -1817,7 +1817,7 @@ bool Monitor::Analyse() {
                   noteSet.insert(linked_monitors[i]->Name());
                   uint64_t linked_event_id = linked_monitors[i]->getLastEventId();
                   if (linked_event_id) {
-                    noteSet.insert(linked_event_id);
+                    noteSet.insert(std::to_string(linked_event_id));
                   }
                   score += linked_monitors[i]->lastFrameScore(); // 50;
                 } else {
