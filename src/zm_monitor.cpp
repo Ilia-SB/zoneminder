@@ -1814,10 +1814,10 @@ bool Monitor::Analyse() {
                       first_link = false;
                     }
                   }
-                  noteSet.insert("[m] " + linked_monitors[i]->Name());
+                  noteSet.insert(std::string("[m] ") + linked_monitors[i]->Name());
                   uint64_t linked_event_id = linked_monitors[i]->getLastEventId();
                   if (linked_event_id) {
-                    noteSet.insert("[e] " + std::to_string(linked_event_id));
+                    noteSet.insert(std::string("[e] ") + std::to_string(linked_event_id));
                   }
                   score += linked_monitors[i]->lastFrameScore(); // 50;
                 } else {
