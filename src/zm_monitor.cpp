@@ -1827,6 +1827,13 @@ bool Monitor::Analyse() {
               } else {
                 Debug(1, "Linked monitor %d %d is not connected. Connecting.", i, linked_monitors[i]->Id());
                 linked_monitors[i]->connect();
+                if (linked_monitors[i]->hasAlarmed()) {
+                  noteSet.insert(std::string("[m] ") + linked_monitors[i]->Name());
+                  uint64_t linked_event_id = linked_monitors[i]->getLastEventId();
+                  if (linked_event_id) {
+                    noteSet.insert(std::string("[e] ") + std::to_string(linked_event_id));
+                  }
+                }
               }
             } // end foreach linked_monitor
             if (noteSet.size() > 0)
